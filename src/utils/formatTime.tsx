@@ -1,0 +1,6 @@
+export function formatDuration(minutes: number): string {
+    if (minutes <= 60) return `${minutes} minutes`;
+    const hours = Math.floor(minutes / 60);                                                                                                                                                        
+    const mins = minutes % 60;
+    return `${hours}h ${mins}min`;                                                                                                                                                                 
+  }
