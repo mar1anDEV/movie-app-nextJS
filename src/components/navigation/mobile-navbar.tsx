@@ -89,7 +89,7 @@ function MobileNav() {
   return (
     <div
       className={`${
-        isOpen ? "z-[99999999]" : "z-10"
+        isOpen ? "z-[99999999]" : "z-1"
       } navSm-content block md:hidden absolute h-screen top-0 bottom-0 left-0 right-0`}
       aria-label="mobile navigation"
       role="navigation"
