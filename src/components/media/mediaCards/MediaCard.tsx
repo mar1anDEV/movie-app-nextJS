@@ -1,5 +1,5 @@
 import StarRating from '../../ui/Star';
-import '../css/carousel.css'
+import '../../../styles/card.css'
 import Image from 'next/image';
 
 
@@ -45,7 +45,7 @@ const Card = ({
       <div className="card-overlay-desktop absolute transition-transform duration-100  left-0 right-0 top-full lg:inset-0 w-full h-full scale-75 opacity-0 lg:group-hover:opacity-100 lg:group-hover:scale-100">
         <div className="relative h-full p-2 flex items-end">
         
-          <div className="card-body-info cursor-pointer glass-panel transition-all duration-initial  w-full h-fit lg:h-full p-4 rounded-lg">
+          <div className="card-body-info cursor-pointer glass-panel transition-all duration-initial backdrop-blur-md  w-full h-fit lg:h-full p-4 rounded-lg">
             
             <div className='flex flex-col justify-between h-full'>
               <div className='metadata-card'>

@@ -1,6 +1,7 @@
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { Swiper} from 'swiper/react';
-import '../css/carousel.css'
+import '../../styles/carousel.css'
+import '../../styles/card.css'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -16,7 +17,7 @@ interface btnNavProp{
 function Carousel({children, prevBTN, nextBTN}: {children: React.ReactNode} & btnNavProp) {
   return (
     <Swiper
-      className="trending-movies-carousel"
+      className="trending-movies-carousel w-[calc(100%-2rem)] mx-auto xl:w-[calc(100%-12rem)]"
       modules={[Navigation, Pagination, Autoplay, EffectFade]}
       autoplay={{delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true}}
       navigation={{

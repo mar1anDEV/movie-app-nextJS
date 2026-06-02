@@ -13,7 +13,7 @@ export async function getMediaList(type: string, endParam: string, page = 1) {
   return res.json()
 }
 
-export async function getTrending(type: string, timeWindow: 'day' | 'week', page = 1) {
+export async function getCards(type: string, timeWindow: 'day' | 'week', page = 1) {
   const res = await fetch(`${BASE_URL}/trending/${type}/${timeWindow}?page=${page}`, {
     method: 'GET',
     headers: {

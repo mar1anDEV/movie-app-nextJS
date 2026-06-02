@@ -1,17 +1,17 @@
 
 import HeroSection from "../components/banner/hero-banner/Hero"
-import CarouselRow from "@/components/carousel/mediaCarousel/CarouselRow"
-
-
-function HomePage() {
+import CarouselRow from "../components/carousel/mediaCarousel/CarouselRow"
+import { getCards } from "@/lib/tmdb"
+import '../styles/card.css'
+async function HomePage() {
 
   
-
+const dataCards = await getCards('movie', 'day', 1)
 
 
   return (<>
     
-    
+  
 
     <div className={'block'}>
 
@@ -20,6 +20,7 @@ function HomePage() {
 
       <HeroSection/>
       
+      <CarouselRow  title="Trending" type="movie"  prevBtn={1} nextBtn={2} dataObject={dataCards.results}/>
     </div>
     
     </div>

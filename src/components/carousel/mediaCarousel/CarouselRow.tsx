@@ -1,45 +1,46 @@
-import Carousel from './carousel';
+"use client"
+import Carousel from '../carousel';
 import {SwiperSlide } from 'swiper/react';
-import useMediaList from '../hooks/fetchMedia/fetchCards/useMediaList';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft,faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import Card from '../card/Card';
-import { genreMap } from '../utils/genreMap';
-import '../css/card.css'
-import { useNavigate } from "react-router";
+import Card from '../../media/mediaCards/MediaCard';
+import { useRouter } from 'next/navigation';
+import '../../../styles/card.css'
+import { genreMap } from '@/utils/genreMap';
+
 
 
 
 interface CarouselRowProps{
     title: string,
     type: 'movie' | 'tv',
-    endParam?: string,
-    timeWindow?: 'day' | 'week',
     prevBtn: number,
-    nextBtn:number
+    nextBtn:number,
+    dataObject?: any[],
 }
-function CarouselRow({title,type,endParam,timeWindow,prevBtn,nextBtn}: CarouselRowProps) {
-    const navigate = useNavigate()
+ function CarouselRow({title,type,prevBtn,nextBtn,dataObject}: CarouselRowProps) {
     
-    const { data, loading, errorF } = useMediaList({type: type, endParam: endParam, pageNumber: 1, timeWindow: timeWindow})
+    const navigator = useRouter()
+   
+    
     
    
-    const dataObject = data?.results?.filter((item) => item.vote_average > 0 && item.poster_path !== null && item.overview !== "")
+    
       
    
     
     
   return (<>
     <section className='trending-row py-2 pb-6' aria-label={`${title} ${type === 'movie' ? 'Movies' : 'Series'}`}>
-      <div className="w-[calc(100%-2rem)] xl:w-[calc(100%-12rem)] mx-auto">
-        <header className="p-6"><h1 className="text-white text-2xl capitalize">{type === 'movie' ? `${title} Movies` : `${title} Series`}</h1></header>
+      <div className="mx-auto">
+        <header className="p-6 w-[calc(100%-2rem)] xl:w-[calc(100%-12rem)] mx-auto flex"><span className='bg-amber-500 w-2 rounded-2xl'></span><h1 className="text-white text-2xl capitalize ml-2">{type === 'movie' ? `${title} Movies` : `${title} Series`}</h1></header>
         <div className="swiper-carousel w-full flex flex-row relative items-center justify-center">
           <button type="button" aria-label="Previous" className={`h-fit w-fit custom-${prevBtn}-prev-btn cursor-pointer`}><FontAwesomeIcon aria-hidden={true} className="text-4xl text-amber-400/90" icon={faChevronLeft}></FontAwesomeIcon></button>
           <Carousel prevBTN={prevBtn} nextBTN={nextBtn} >
             {dataObject?.map((eachCard)=>{
             return (
               
-                <SwiperSlide onClick={()=>navigate(`/watch/${eachCard.id}`)} key={eachCard.id}>
+                <SwiperSlide onClick={()=>navigator.push(`/watch/${eachCard.id}`)} key={eachCard.id}>
                 <div className='w-[240px] mx-auto'>
                   <Card
                       cardRef={eachCard.id}
@@ -48,7 +49,7 @@ function CarouselRow({title,type,endParam,timeWindow,prevBtn,nextBtn}: CarouselR
                       cardYear={type === 'movie' ? eachCard.release_date?.slice(0,4) : eachCard.first_air_date?.slice(0,4)}
                       cardUndertitle={eachCard.overview}
                       cardRating={eachCard.vote_average}
-                      cardGenres={eachCard.genre_ids.map((id) => genreMap[id]).join(', ')}
+                      cardGenres={eachCard.genre_ids.map((id: number) => genreMap[id]).join(', ')}
                       />
                 </div>
               </SwiperSlide>
