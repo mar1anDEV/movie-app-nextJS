@@ -64,7 +64,7 @@ export default function HeroDesktop({
 
                   <div className="w-[calc(100%-2rem)] xl:w-[calc(100%-12rem)] mx-auto h-full flex items-center">
                     <div className="w-full max-w-2xl py-6">
-  {/* Badge */}
+ 
                     <div className="w-fit mb-4 rounded-full border border-amber-400/40 bg-amber-400/15 px-4 py-1">
                       <div className="flex items-center gap-2">
                         <div className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />

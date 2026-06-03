@@ -1,3 +1,4 @@
+"use client"
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { Swiper} from 'swiper/react';
 import '../../styles/carousel.css'

@@ -33,7 +33,7 @@ interface CarouselRowProps{
   return (<>
     <section className='trending-row py-2 pb-6' aria-label={`${title} ${type === 'movie' ? 'Movies' : 'Series'}`}>
       <div className="mx-auto">
-        <header className="p-6 w-[calc(100%-2rem)] xl:w-[calc(100%-12rem)] mx-auto flex"><span className='bg-amber-500 w-2 rounded-2xl'></span><h1 className="text-white text-2xl capitalize ml-2">{type === 'movie' ? `${title} Movies` : `${title} Series`}</h1></header>
+        <header className="p-6 w-[calc(100%-2rem)] xl:w-[calc(100%-12rem)] mx-auto flex"><span className='bg-amber-500 w-2 rounded-2xl'></span><h1 className="text-white text-xl capitalize ml-2">{type === 'movie' ? `${title} Movies` : `${title} Series`}</h1></header>
         <div className="swiper-carousel w-full flex flex-row relative items-center justify-center">
           <button type="button" aria-label="Previous" className={`h-fit w-fit custom-${prevBtn}-prev-btn cursor-pointer`}><FontAwesomeIcon aria-hidden={true} className="text-4xl text-amber-400/90" icon={faChevronLeft}></FontAwesomeIcon></button>
           <Carousel prevBTN={prevBtn} nextBTN={nextBtn} >
