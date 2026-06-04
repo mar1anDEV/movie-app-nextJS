@@ -1,7 +1,7 @@
 import StarRating from '../../ui/Star';
 import '../../../styles/card.css'
 import Image from 'next/image';
-
+import { Star } from 'lucide-react';
 
 interface CardProps {
     cardImageSource: string,
@@ -29,49 +29,36 @@ const Card = ({
 
   return (
     
-      <div id={`${cardRef}`} className="card mx-auto w-full relative cursor-pointer group overflow-hidden rounded-lg">
+    <div id={`${cardRef}`} className="card mx-auto w-full relative cursor-pointer group flex flex-row">
       <div className="card-body">
         <div className="card-image h-93.75 lg:h-85.25 overflow-hidden relative">
           <Image
             src={`https://image.tmdb.org/t/p/w500${cardImageSource}`}
             alt={cardTitle}
-            className="block w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="block w-full h-full object-cover overflow-hidden rounded-lg"
             width={500}
             height={345}
           />
-        </div>
-      </div>
-
-      <div className="card-overlay-desktop absolute transition-transform duration-100  left-0 right-0 top-full lg:inset-0 w-full h-full scale-75 opacity-0 lg:group-hover:opacity-100 lg:group-hover:scale-100">
-        <div className="relative h-full p-2 flex items-end">
-        
-          <div className="card-body-info cursor-pointer glass-panel transition-all duration-initial backdrop-blur-md  w-full h-fit lg:h-full p-4 rounded-lg">
-            
-            <div className='flex flex-col justify-between h-full'>
-              <div className='metadata-card'>
-                <div className="card-header mb-1">
-              <span className="text-white text-lg font-semibold drop-shadow-lg">{cardTitle}</span>
-              <span className="text-white/90 ml-1.5 mb-1.5 text-sm drop-shadow-md">{cardYear}</span>
-            </div>
-            <div className="card-underheader mb-1">
-              <span className="text-white/90 card-description line-clamp-3 font-medium text-sm drop-shadow-md">{cardUndertitle}</span>
-            </div>
-            <div className="card-genres mt-1.5">
-              <p className='text-yellow-500 text-md font-bold'>
-                Genres: <span className="text-white/90 font-medium text-sm drop-shadow-md">{cardGenres}</span>
-              </p>
-            </div>
-            <div className="card-show-rating mt-1.5">
-              <div className='text-yellow-500 text-md font-bold flex flex-row items-center'>
-                Rating: <div className='inline-block ml-2'><StarRating rating={cardRating / 2} /></div>
+          <div className='absolute inset-0 bg-black/30'>
+          <div className='absolute left-0 right-0 bottom-0 h-1/2 bg-linear-to-t from-black to-transparent'></div>
+            <div className='absolute inset-0 flex items-end p-4'>
+              <div className='flex flex-col gap-2 w-full'>
+                <h3 className='text-white text-md font-bold truncate'>{cardTitle}</h3>
+                <div className='flex flex-row justify-between w-full'>
+                 
+                  <div className='flex items-center gap-1'>
+                    <Star size={16} className='text-yellow-400 fill-current' />
+                    <span className='text-white text-xs font-bold'>{cardRating.toFixed(1) / 2}</span>
+                  </div>
+                  <div>
+                    <p className='text-gray-300 text-xs'>{cardYear}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-              </div>
-              
             </div>
           </div>
         </div>
-      </div>
+      </div>    
     </div>
     
   );

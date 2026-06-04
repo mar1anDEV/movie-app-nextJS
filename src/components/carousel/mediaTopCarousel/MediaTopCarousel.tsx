@@ -3,13 +3,13 @@ import Carousel from './carousel';
 import { SwiperSlide } from 'swiper/react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import Card from '../../media/mediaCards/MediaCard';
+import MediaCardTop from '@/components/media/mediaCards/MediaCardTop';
 import { useRouter } from 'next/navigation';
 import '../../../styles/card.css'
-import { genreMap } from '@/utils/genreMap';
 
 
-interface CarouselRowProps {
+
+interface CarouselTopRowProps {
   title: string,
   type: 'movie' | 'tv',
   prevBtn: number,
@@ -17,7 +17,7 @@ interface CarouselRowProps {
   dataObject?: any[],
 }
 
-function CarouselRow({ title, type, prevBtn, nextBtn, dataObject }: CarouselRowProps) {
+function CarouselTopRow({ title, type, prevBtn, nextBtn, dataObject }: CarouselTopRowProps) {
   const navigator = useRouter()
 
   return (
@@ -37,17 +37,15 @@ function CarouselRow({ title, type, prevBtn, nextBtn, dataObject }: CarouselRowP
             <Carousel prevBTN={prevBtn} nextBTN={nextBtn}>
               {dataObject?.map((eachCard) => (
                 <SwiperSlide onClick={() => navigator.push(`/watch/${eachCard.id}`)} key={eachCard.id}>
-                  <div className=' mx-auto'>
-                      <Card
+                  
+                      <MediaCardTop
                         cardRef={eachCard.id}
                         cardImageSource={eachCard.poster_path}
                         cardTitle={type === 'movie' ? eachCard?.title : eachCard?.name}
                         cardYear={type === 'movie' ? eachCard.release_date?.slice(0, 4) : eachCard.first_air_date?.slice(0, 4)}
-                        cardUndertitle={eachCard.overview}
                         cardRating={eachCard.vote_average}
-                        cardGenres={eachCard.genre_ids.map((id: number) => genreMap[id]).join(', ')}
                       />
-                    </div>
+                    
                 </SwiperSlide>
               ))}
             </Carousel>
@@ -61,4 +59,4 @@ function CarouselRow({ title, type, prevBtn, nextBtn, dataObject }: CarouselRowP
   )
 }
 
-export default CarouselRow
+export default CarouselTopRow

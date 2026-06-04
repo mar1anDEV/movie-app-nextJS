@@ -68,3 +68,9 @@
  background: rgba(245, 158, 11, 0.6) !important;
  transform: scale(1.1) !important;
 }
+.swiper-slide{
+  display:flex !important;
+  item-align:center !important;
+  align-items:center;
+  justify-content:center;
+}

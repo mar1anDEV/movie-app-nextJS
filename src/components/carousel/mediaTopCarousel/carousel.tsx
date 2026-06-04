@@ -1,8 +1,7 @@
 "use client"
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { Swiper} from 'swiper/react';
-import '../../styles/carousel.css'
-import '../../styles/card.css'
+import '../../../styles/carousel.css'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -20,7 +19,7 @@ function Carousel({children, prevBTN, nextBTN}: {children: React.ReactNode} & bt
     <Swiper
       className="trending-movies-carousel w-[calc(100%-2rem)] mx-auto xl:w-[calc(100%-12rem)]"
       modules={[Navigation, Pagination, Autoplay, EffectFade]}
-      autoplay={{delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true}}
+      autoplay={{delay: 53000, disableOnInteraction: false, pauseOnMouseEnter: true}}
       navigation={{
         nextEl: `.custom-${nextBTN}-next-btn`,
         prevEl: `.custom-${prevBTN}-prev-btn`,
@@ -51,23 +50,23 @@ function Carousel({children, prevBTN, nextBTN}: {children: React.ReactNode} & bt
     spaceBetween: 10
   },
   1770: {
-    slidesPerView: 6,
+    slidesPerView: 5,
     spaceBetween: 10
   },
   2018: {
-    slidesPerView: 7,
+    slidesPerView: 6,
     spaceBetween: 10
   },
   2300: {
-    slidesPerView: 8,
+    slidesPerView: 7,
     spaceBetween: 10
   },
   2560: {
-    slidesPerView: 9,
+    slidesPerView: 7,
     spaceBetween: 10
   },
   3840: {
-    slidesPerView: 12,
+    slidesPerView: 8,
     spaceBetween: 12
   }
 }
