@@ -31,7 +31,7 @@ const Card = ({
     
     <div id={`${cardRef}`} className="card mx-auto w-full relative cursor-pointer group flex flex-row">
       <div className="card-body">
-        <div className="card-image h-93.75 lg:h-85.25 overflow-hidden relative">
+        <div className="card-image h-93.75 lg:h-85.25 overflow-hidden relative hover:scale-105 transition-transform duration-300 ease-in-out">
           <Image
             src={`https://image.tmdb.org/t/p/w500${cardImageSource}`}
             alt={cardTitle}

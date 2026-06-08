@@ -26,6 +26,19 @@ export async function getCards(type: string, timeWindow: 'day' | 'week', page = 
   return res.json()
 }
 
+export async function getUpcoming(type: string, page = 1) {
+  const res = await fetch(`${BASE_URL}/${type}/upcoming?page=${page}`, {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${process.env.TMDB_READ_TOKEN}`
+    },
+    next: { revalidate: 3600 }
+  })
+  if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`)
+  return res.json()
+}
+
 export async function getMediaDetails(type: string, id: number) {
   const res = await fetch(`${BASE_URL}/${type}/${id}?append_to_response=credits,release_dates,videos`, {
     method: 'GET',
