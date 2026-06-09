@@ -27,7 +27,7 @@ console.log(dataCardsUpcoming.results[0])
       <HeroSection/>
       <CarouselRow  title="Trending" type="movie"  prevBtn={1} nextBtn={2} dataObject={dataCardsTrending.results}/>
       <CarouselTopRow title="Top Rated" type="movie" prevBtn={3} nextBtn={4} dataObject={dataCardsTopRated.results}/>
-       <Banner bannerImageSource={dataCardsUpcoming.results[0].backdrop_path} bannerTitle={dataCardsUpcoming.results[0].title} bannerSubtitle={dataCardsUpcoming.results[0].overview}/>
+       <Banner bannerImageSource={dataCardsUpcoming.results[2].backdrop_path} bannerTitle={dataCardsUpcoming.results[0].title} bannerPosterSource={dataCardsUpcoming.results[0].poster_path}/>
     </div>
     
     </div>
